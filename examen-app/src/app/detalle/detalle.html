@@ -1,0 +1,37 @@
+<div class="container mt-4" *ngIf="estudiante">
+  <div class="card shadow">
+    <div class="card-header bg-dark text-white">
+      <h3 class="mb-0">Detalle del Estudiante: {{ estudiante.nombre }}</h3>
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush mb-4">
+        <li class="list-group-item">
+          <strong>Suma de Notas:</strong> {{ suma }}
+        </li>
+        <li class="list-group-item">
+          <strong>Promedio:</strong> {{ promedio | number:'1.2-2' }}
+        </li>
+        <li class="list-group-item">
+          <strong>Estado Académico:</strong> 
+          <span class="badge" [ngClass]="estado === 'Aprobado' ? 'bg-success' : 'bg-danger'">
+            {{ estado }}
+          </span>
+        </li>
+        <li class="list-group-item">
+          <strong>Observación:</strong> 
+          <span class="badge" [ngClass]="{
+            'bg-success': observacion === 'Excelente',
+            'bg-warning text-dark': observacion === 'Regular',
+            'bg-danger': observacion === 'En riesgo'
+          }">
+            {{ observacion }}
+          </span>
+        </li>
+      </ul>
+
+      <button class="btn btn-secondary" (click)="volver()">
+        Volver a la Tabla
+      </button>
+    </div>
+  </div>
+</div>
